@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="CabalSiteMaster.master.cs" Inherits="CabalSiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <title>Cabal Seal</title>
+    <webopt:BundleReference runat="server" Path="~/Content/bootstrap/base" /> 
+    <webopt:BundleReference runat="server" Path="~/Content/bootstrap/theme" /> 
+    <webopt:BundleReference runat="server" Path="~/Content/css" /> 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--<asp:ScriptReference Name="MsAjaxBundle" />--%>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery.ui.combined" />
+            </Scripts>
+        </asp:ScriptManager>
+    </form>
+
+    <!-- Nav Bar-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Cabal Nevarath</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a runat="server" href="~/home">Home</a></li>
+                <li><a runat="server" href="~/account/registermember">Register</a></li>
+                <li><a runat="server" href="~/download">Download</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="navbar-form navbar-right">
+                <div class="form-group">
+                  <input type="text" placeholder="User Name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+              </form>
+            </div><!--/.navbar-collapse -->
+          </div>
+        </div>
+
+    <!-- Header-->
+    <div class="wrap_visual">
+            <div id="block-header">
+                <div>
+                    <div class="wrapper">
+                        <div id="headerbar" class="grid-block">
+	                        <div style="text-align:center;width:1000px;padding-top:28px"><img src="../Images/newlayout/logo.png"></div>				
+                        </div>
+                        <div id="menubar" class="grid-block">
+					       <%-- <nav id="menu">
+					            <ul class="menu menu-dropdown">
+					                <li class="level1">
+					                    <a href="<%=Base_Controller.Domain %>">
+                                            <span>Home</span>
+                                        </a>
+					                </li>
+					                <li class="level1">
+					                    <a href="<%=Base_Controller.Domain + "register.aspx" %>">
+					                    <span>Register</span>
+					                    </a>
+					                </li>
+					                <li class="level1">
+					                    <a href="<%=Base_Controller.Domain + "download.aspx" %>">
+					                    <span>Download</span>
+					                    </a>
+					                </li>
+					                <li class="level1">
+					                    <a href="<%=Base_Controller.Domain + "rankings/playerranking.aspx" %>">
+					                    <span>Ranking</span>
+					                    </a>
+					                </li>
+					                <li class="level1">
+					                    <span>Donate</span>
+					                </li>			            					            
+					            </ul>
+					        </nav>--%>
+					
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="body" data-ng-app="cabalApp" class="container">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </div>
+        
+        </div>  
+
+    <asp:PlaceHolder runat="server">      
+        <%: Scripts.Render("~/bundles/bootstrap") %>
+        <%: Scripts.Render("~/bundles/angular") %>
+    </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder runat="server" ID="ScriptContent" />
+
+</body>
+
+</html>

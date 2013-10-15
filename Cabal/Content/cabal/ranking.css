@@ -1,0 +1,10 @@
+﻿
+/* Ranking board */
+.board div.boardBox{ width:95%; padding: 4 4 10 4; }
+
+.rGrid { width:100%; color:#B3AFAC; border:0 }  
+.rGrid th { background-color:#0d0e0a; border:0px; color:White; font-size:15px;}  
+.rGrid tr { text-align:center; border-bottom:solid 1px #575555;}
+.rGrid td { border: 0;}  
+
+

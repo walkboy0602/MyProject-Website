@@ -1,0 +1,15 @@
+﻿
+
+/*Overwrite bootstrap css*/
+.alert-center {
+  padding: 15px;
+  margin: 10px 0 20px 220px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.error {
+    color:#b94a48;
+}
+

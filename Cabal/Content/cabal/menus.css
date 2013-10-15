@@ -1,0 +1,33 @@
+﻿
+/*#menubar {
+	padding: 10px 0 0 0;
+	height: 43px;
+    margin-bottom: 45px;
+}
+
+
+#menu { margin-top: 2px; float:left;}
+.menu { margin: 0px; padding: 0px; list-style:none;}
+
+.menu-dropdown { margin-bottom:-22px; }
+.menu-dropdown, .menu-dropdown .level1, .menu-dropdown .level1>span { float:left; }
+.menu-dropdown li.level1 { margin-right:23px; padding-bottom:22px; z-index:5; color:White; font-family:"Times New Roman", Times, serif; font-size:17px;}
+.menu-dropdown a.level1, .menu-dropdown span.level1 { font-size:14px; text-transform: uppercase; text-shadow:0 -1px 0 rgba(0, 0, 0, 1.0); }
+
+h5, h6, .menu-dropdown li.active .level1, .menu-dropdown a.current.level2, .menu-dropdown a.current.level3, .menu-sidebar a.current, .breadcrumbs strong
+{
+    color:white;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, 1.0),0 0 5px rgba(255, 255, 255, 0.4)
+}
+
+.menu-dropdown a>span, .menu-dropdown span.level1>span
+{
+ 
+    text-decoration: none;
+    color:White;
+}
+
+.menu-dropdown .lev1Right
+{
+    float:left; margin-right:23px; padding-bottom:22px; z-index:5; color:White; font-family:"Times New Roman", Times, serif; font-size:17px;
+}*/
