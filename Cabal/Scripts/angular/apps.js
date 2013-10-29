@@ -1,6 +1,6 @@
 ﻿
 //declare a module
-var cabalApp = angular.module("cabalApp", ['ui.bootstrap']);
+var cabalApp = angular.module("cabalApp", ['cabalAPI', 'ui.bootstrap']);
 
 cabalApp.run(['$rootScope', '$window', '$http', function ($rootScope, $window, $http) {
     //add this so server side will recognise as ajax request

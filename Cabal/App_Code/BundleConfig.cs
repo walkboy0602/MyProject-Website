@@ -15,6 +15,7 @@ namespace Cabal
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular/angular.js",
                 "~/Scripts/angular/apps.js",
+                "~/Scripts/angular/api.js",
                 "~/Scripts/angular/directive.js",
                 "~/Scripts/angular/ui-bootstrap-tpls-0.6.0.js"
                 ));
