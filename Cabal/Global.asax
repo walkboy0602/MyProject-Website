@@ -7,6 +7,21 @@
    
 <script runat="server">
 
+    public class MyHttpControllerHandler : HttpControllerHandler, IRequiresSessionState
+    {
+        public MyHttpControllerHandler(RouteData routeData)
+            : base(routeData)
+        {
+        }
+    }
+    public class MyHttpControllerRouteHandler : HttpControllerRouteHandler
+    {
+        protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
+        {
+            return new MyHttpControllerHandler(requestContext.RouteData);
+        }
+    }
+    
     void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
@@ -17,7 +32,7 @@
         //Add this in order to use the WebAPI
         RouteTable.Routes.MapHttpRoute(
             name: "DefaultApi",
-            routeTemplate: "api/{controller}/{id}",
+            routeTemplate: "api/{controller}/{action}/{id}",
             defaults: new { id = System.Web.Http.RouteParameter.Optional }
             );
     }

@@ -17,7 +17,8 @@ namespace Cabal
                 "~/Scripts/angular/apps.js",
                 "~/Scripts/angular/api.js",
                 "~/Scripts/angular/directive.js",
-                "~/Scripts/angular/ui-bootstrap-tpls-0.6.0.js"
+                "~/Scripts/angular/ui-bootstrap-tpls-0.6.0.js",
+                "~/Scripts/angular/controllers/user.js"
                 ));
 
             //plugin

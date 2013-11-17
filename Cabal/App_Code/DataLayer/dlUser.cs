@@ -88,4 +88,34 @@ public class dlUser
             throw ex;
         }
     }
+
+    public static bool LoginUser(User user)
+    {
+        try
+        {
+            string UserID = string.Empty;
+            DataTable dt = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["cabalAcc"].ToString()))
+            {
+                conn.Open();
+                string strSQL = "SELECT TOP 1 UserNum FROM cabal_auth_table (NOLOCK) WHERE ID = @UserName and pwdcompare(@Password, Password) = 1 ";
+                SqlCommand cmd = new SqlCommand(strSQL, conn);
+                cmd.Parameters.AddWithValue("@UserName", user.Username);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                if (dt.Rows.Count > 0) UserID = dt.Rows[0]["UserNum"].ToString();
+
+                return true;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
 }

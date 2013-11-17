@@ -1,4 +1,48 @@
-﻿
+﻿//Login User
+cabalApp.controller("LoginController", ['$scope', 'dataFactory',
+    function ($scope, dataFactory) {
+
+        var validator = $("#formLogin").validate({
+            debug: true,
+            rules: {
+                username: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                }
+            }
+        });
+
+        $scope.save = function (form) {
+            console.log('d');
+
+            if (validator.valid()) {
+
+                dataFactory.login(form)
+                    .success(function (data){
+                        $scope.alert = {
+                            type: 'success',
+                            msg: 'Welcome to Cabal Neverath World!',
+                            title: 'Success!',
+                            display: true
+                        }
+                    })
+                    .error(function (data, status){
+                        $scope.alert = {
+                            type: 'danger',
+                            title: 'Oh Crap!',
+                            msg: 'There was an error while processing your request.',
+                            display: true
+                        };
+                    });
+
+                }
+            }
+
+    }]);
+
+//Register Account
 cabalApp.controller("RegisterController", ['$scope', 'dataFactory',
     function ($scope, dataFactory) {
 
@@ -25,18 +69,16 @@ cabalApp.controller("RegisterController", ['$scope', 'dataFactory',
             },
             messages: {
                 cPassword: " Password does not match."
-            },
+            }
         });
 
 
         $scope.save = function (form) {
-            console.debug(form);
 
             if (validator.valid()) {
 
-                dataFactory.submitRegistration(form)
+                dataFactory.register(form)
                     .success(function (data) {
-                        console.debug(data);
                         $scope.alert = {
                             type: 'success',
                             msg: 'Welcome to Cabal Neverath World!',
@@ -67,6 +109,7 @@ cabalApp.controller("RegisterController", ['$scope', 'dataFactory',
 
 
     }]);
+
 
 
 

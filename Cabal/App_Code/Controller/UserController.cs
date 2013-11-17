@@ -13,17 +13,13 @@ public class UserController : ApiController
         return new string[] { "value1", "value2" };
     }
 
-    // GET api/<controller>/5
-    public string Get(int id)
-    {
-        return "value";
-    }
 
-    // POST api/<controller>
-    public HttpResponseMessage Post([FromBody]User user)
+    // POST api/<controller>/<action>
+    [HttpPost]
+    public HttpResponseMessage Register([FromBody]User user)
     {
         var response = new HttpResponseMessage();
-
+        
         //server side validation
         if (dlUser.UserNameExist(user.Username))
         {
@@ -41,19 +37,21 @@ public class UserController : ApiController
         //Get User IP Address
         user.IPAddress = blBase.getIPAddress();
 
-        bool status = dlUser.CreateNewAccount(user);
+        bool status = dlUser.CreateNewAccount(user);  
+
 
         if (status) return new HttpResponseMessage(HttpStatusCode.OK);
         throw new HttpResponseException(HttpStatusCode.NotFound);
     }
 
-    // PUT api/<controller>/5
-    public void Put(int id, [FromBody]string value)
+    [HttpPost]
+    public HttpResponseMessage Login([FromBody]User user)
     {
-    }
+        var response = new HttpResponseMessage();
 
-    // DELETE api/<controller>/5
-    public void Delete(int id)
-    {
+        bool status = dlUser.LoginUser(user);
+
+        if (status) return new HttpResponseMessage(HttpStatusCode.OK);
+        throw new HttpResponseException(HttpStatusCode.NotFound);
     }
 }

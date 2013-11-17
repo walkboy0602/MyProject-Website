@@ -58,6 +58,4 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="ScriptContent" ContentPlaceHolderID="ScriptContent">
-        <%: Scripts.Render("~/bundles/plugin") %>
-      <script src="../Scripts/angular/controllers/user.js"></script>
 </asp:Content>

@@ -5,12 +5,12 @@ angular.module('cabalAPI', [])
     .factory('dataFactory', ['$http', function ($http) {
 
         return {
-            sendEnquiry: function (data) {
-                return $http.post('/api/enquiry', data);
+            register: function (data) {
+                return $http.post('/api/user/register', data);
             },
-            submitRegistration: function (data) {
-                return $http.post('/api/user', data);
-            },
+            login: function (data) {
+                return $http.post('/api/user/login', data);
+            }
         }
 
         //dataFactory.getCustomers = function () {
