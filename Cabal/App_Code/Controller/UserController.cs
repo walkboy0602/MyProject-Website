@@ -28,7 +28,8 @@ public class UserController : ApiController
             var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Someone already use that username. Try another?");
             throw new HttpResponseException(errorResponse);
         }
-        else if (dlUser.EmailExist(user.Email))
+
+        if (dlUser.EmailExist(user.Email))
         {
             var errorResponse = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Email has already been used. Try another?");
             throw new HttpResponseException(errorResponse);
