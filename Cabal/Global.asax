@@ -7,21 +7,38 @@
    
 <script runat="server">
 
-    public class MyHttpControllerHandler : HttpControllerHandler, IRequiresSessionState
+    // Create two new classes for session handling
+    //public class MyHttpControllerHandler
+    //    : HttpControllerHandler, IRequiresSessionState
+    //{
+    //    public MyHttpControllerHandler(RouteData routeData)
+    //        : base(routeData)
+    //    { }
+    //}
+    //public class MyHttpControllerRouteHandler : HttpControllerRouteHandler
+    //{
+    //    protected override IHttpHandler GetHttpHandler(
+    //        RequestContext requestContext)
+    //    {
+    //        return new MyHttpControllerHandler(requestContext.RouteData);
+    //    }
+    //}
+
+    public class SessionControllerHandler : HttpControllerHandler, IRequiresSessionState
     {
-        public MyHttpControllerHandler(RouteData routeData)
-            : base(routeData)
+            public SessionControllerHandler(RouteData routeData)
+                : base(routeData)
+            {}
+    }
+
+    public class SessionRouteHandler : IRouteHandler
+    {
+        IHttpHandler IRouteHandler.GetHttpHandler(RequestContext requestContext)
         {
+            return new SessionControllerHandler(requestContext.RouteData);
         }
     }
-    public class MyHttpControllerRouteHandler : HttpControllerRouteHandler
-    {
-        protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
-        {
-            return new MyHttpControllerHandler(requestContext.RouteData);
-        }
-    }
-    
+
     void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
@@ -34,7 +51,7 @@
             name: "DefaultApi",
             routeTemplate: "api/{controller}/{action}/{id}",
             defaults: new { id = System.Web.Http.RouteParameter.Optional }
-            );
+            ).RouteHandler = new SessionRouteHandler(); ;
     }
     
     void Application_End(object sender, EventArgs e)

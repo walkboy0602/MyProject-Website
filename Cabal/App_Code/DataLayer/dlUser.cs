@@ -89,17 +89,16 @@ public class dlUser
         }
     }
 
-    public static bool LoginUser(User user)
+    public static User LoginUser(User user)
     {
         try
         {
-            string UserID = string.Empty;
             DataTable dt = new DataTable();
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["cabalAcc"].ToString()))
             {
                 conn.Open();
-                string strSQL = "SELECT TOP 1 UserNum FROM cabal_auth_table (NOLOCK) WHERE ID = @UserName and pwdcompare(@Password, Password) = 1 ";
+                string strSQL = "SELECT UserNum, ID FROM cabal_auth_table (NOLOCK) WHERE ID = @UserName and pwdcompare(@Password, Password) = 1 ";
                 SqlCommand cmd = new SqlCommand(strSQL, conn);
                 cmd.Parameters.AddWithValue("@UserName", user.Username);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
@@ -107,9 +106,14 @@ public class dlUser
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
 
-                if (dt.Rows.Count > 0) UserID = dt.Rows[0]["UserNum"].ToString();
+                if (dt.Rows.Count > 0)
+                {
+                    user.AccountID = (int)dt.Rows[0]["UserNum"];
+                    user.Username = dt.Rows[0]["ID"].ToString();
+                }
 
-                return true;
+                return user;
+
             }
 
         }

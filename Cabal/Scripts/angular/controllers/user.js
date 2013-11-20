@@ -1,6 +1,6 @@
 ﻿//Login User
-cabalApp.controller("LoginController", ['$scope', 'dataFactory',
-    function ($scope, dataFactory) {
+cabalApp.controller("LoginController", ['$scope', 'dataFactory', '$route',
+    function ($scope, dataFactory, $route) {
 
         var validator = $("#formLogin").validate({
             debug: true,
@@ -15,7 +15,6 @@ cabalApp.controller("LoginController", ['$scope', 'dataFactory',
         });
 
         $scope.save = function (form) {
-            console.log('d');
 
             if (validator.valid()) {
 
@@ -23,18 +22,26 @@ cabalApp.controller("LoginController", ['$scope', 'dataFactory',
                     .success(function (data){
                         $scope.alert = {
                             type: 'success',
-                            msg: 'Welcome to Cabal Neverath World!',
-                            title: 'Success!',
+                            msg: 'Logging success!',
                             display: true
                         }
+                        window.location = "/home.aspx";
                     })
-                    .error(function (data, status){
-                        $scope.alert = {
-                            type: 'danger',
-                            title: 'Oh Crap!',
-                            msg: 'There was an error while processing your request.',
-                            display: true
-                        };
+                    .error(function (data, status) {
+                        if (status === 400) {
+                            $scope.alert = {
+                                type: 'warning',
+                                msg: data.Message,
+                                display: true
+                            };
+                        } else {
+                            $scope.alert = {
+                                type: 'danger',
+                                title: 'Oh Crap!',
+                                msg: 'There was an error while processing your request.',
+                                display: true
+                            };
+                        }
                     });
 
                 }
