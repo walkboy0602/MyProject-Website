@@ -53,7 +53,9 @@ namespace Cabal
             // When <compilation debug="true" />, MVC4 will render the full readable version. When set to <compilation debug="false" />, the minified version will be rendered automatically
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js"));
             bundles.Add(new StyleBundle("~/Content/bootstrap/base").Include("~/Content/bootstrap/bootstrap.css"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap/theme").Include("~/Content/bootstrap/bootstrap-theme.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap/theme").Include(
+                "~/Content/bootstrap/bootstrap-theme.css",
+                "~/Content/bootstrap/bootstrap-style.css"));
 
         }
     }

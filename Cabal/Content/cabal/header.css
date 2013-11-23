@@ -5,7 +5,7 @@
 /* Layout
 ----------------------------------------------------------------------------------------------------*/
 
-#block-header { background: url(../../images/newlayout/header/header.png) 50% 0 no-repeat; margin-top:52px;  }
+#block-header { background: url(../../images/newlayout/header/header.png) 50% 0 no-repeat; margin-top:52px; height:150px; margin-bottom:20px; }
 #block-header > div { background: url(../../images/newlayout/header/header_color.png) 50% 0 no-repeat; }
 .wrapper {width:980px; margin:auto;}
 #headerbar { height: 101px; }

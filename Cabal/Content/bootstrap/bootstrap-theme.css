@@ -324,6 +324,7 @@
 }
 .panel-body {
   padding: 15px;
+  color: #70CCFF;
 }
 .panel > .list-group {
   margin-bottom: 0;
@@ -384,6 +385,7 @@
 }
 .panel-group .panel-heading + .panel-collapse .panel-body {
   border-top: 1px solid rgba(78, 78, 78, 0.81);
+  color: white;
 }
 .panel-group .panel-footer {
   border-top: 0;
